@@ -70,3 +70,20 @@
 ;; '(c b a)
 (my-foldr cons empty '(a b c))
 ;; '(a b c)
+
+
+(define (my-build-list n f)
+  (define (builder k)
+    (cond
+      [(= n k)
+       empty]
+      [else
+       (cons
+        (f k)
+        (builder (add1 k)))]))
+  (builder 0))
+
+(my-build-list 5 add1)
+;; '(1 2 3 4 5)
+(my-build-list 10 (lambda (n) (* n 2)))
+;; '(0 2 4 6 8 10 12 14 16 18)
