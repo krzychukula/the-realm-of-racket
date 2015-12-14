@@ -29,3 +29,11 @@
     [else (or (pred (first lst))
               (my-ormap pred (rest lst)))]))
 
+(define (my-andmap pred lst)
+  (cond
+    [(empty? lst)
+     #t]
+    [else
+     (and
+      (pred (first lst))
+      (my-andmap pred (rest lst)))]))
