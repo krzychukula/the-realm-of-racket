@@ -87,3 +87,22 @@
 ;; '(1 2 3 4 5)
 (my-build-list 10 (lambda (n) (* n 2)))
 ;; '(0 2 4 6 8 10 12 14 16 18)
+
+
+(define (d/dx fun)
+  (define delta (/ 1 100000))
+  (lambda (x)
+    (/
+     (-
+      (fun (+ x delta))
+      (fun (- x delta)))
+     2 delta)))
+
+(define two (d/dx (lambda (x) (* 2 x))))
+(two 17)
+;; 2
+(define newcos (d/dx sin))
+(newcos 0)
+;; 0.9999999999833332
+(map newcos (list (/ pi 2) pi))
+;; '(0.0 -0.9999999999898844)
