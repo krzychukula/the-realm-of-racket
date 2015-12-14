@@ -43,3 +43,18 @@
 ;; #t
 (my-ormap number? empty)
 ;; #f
+
+
+
+(define (my-foldr f base lst)
+  (cond
+    [(empty? lst)
+     base]
+    [else
+     (f (first lst)
+        (my-foldr f base (rest lst)))]))
+
+(my-foldr + 0 '(1 2 3))
+;; 6
+
+
