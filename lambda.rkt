@@ -106,3 +106,15 @@
 ;; 0.9999999999833332
 (map newcos (list (/ pi 2) pi))
 ;; '(0.0 -0.9999999999898844)
+
+
+
+(define (sum lon)
+  (apply + lon))
+(sum '(1 2 3 4 5 6))
+;; 21
+
+(define (highest lon)
+  (apply max lon))
+(highest '(58 77 77 94 23))
+;; 94
