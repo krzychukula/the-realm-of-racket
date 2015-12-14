@@ -57,4 +57,16 @@
 (my-foldr + 0 '(1 2 3))
 ;; 6
 
+(define (my-foldl f base lst)
+  (cond
+    [(empty? lst)
+     base]
+    [else
+     (my-foldl f
+               (f (first lst) base)
+               (rest lst))]))
 
+(my-foldl cons empty '(a b c))
+;; '(c b a)
+(my-foldr cons empty '(a b c))
+;; '(a b c)
