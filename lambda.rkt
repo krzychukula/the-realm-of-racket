@@ -32,8 +32,14 @@
 (define (my-andmap pred lst)
   (cond
     [(empty? lst)
+     ;;this looks to me as a bug in the book
      #t]
     [else
      (and
       (pred (first lst))
       (my-andmap pred (rest lst)))]))
+
+(my-andmap number? empty)
+;; #t
+(my-ormap number? empty)
+;; #f
