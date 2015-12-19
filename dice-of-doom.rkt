@@ -38,3 +38,18 @@
             (on-draw draw-dice-world)
             (stop-when no-more-moves-in-world?
                        draw-end-of-dice-world)))
+
+
+
+(define (rotate-until owned-by board rotate)
+  (define next-list (rotate board))
+  (if (owned-by (territority-player (first next-list)))
+      next-list
+      (rotate-until owned-by next-list rotate)))
+
+
+(define (left l)
+  (append (rest l) (list (first l))))
+
+(define (right l)
+  (append
